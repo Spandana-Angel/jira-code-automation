@@ -1,16 +1,16 @@
-from generator.prompt_builder import build_prompt
-from generator.code_generator import generate_code
-from generator.pr_formatter import format_pr
+from generator import generate_code
+from test_generator import generate_tests
 
 def main():
-    task = input("Enter task: ")
+    user_request = "Add a login API with email and password using FastAPI"
 
-    prompt = build_prompt(task)
-    code = generate_code(prompt)
-    output = format_pr(task, code)
+    print("Generating code...")
+    code = generate_code(user_request)
+    print(code)
 
-    print("\n--- Generated PR ---\n")
-    print(output)
+    print("\nGenerating tests...")
+    tests = generate_tests(user_request)
+    print(tests)
 
 if __name__ == "__main__":
-    main()
+    main()                                    

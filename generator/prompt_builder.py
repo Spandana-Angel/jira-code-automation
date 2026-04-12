@@ -1,18 +1,8 @@
-def build_code_prompt(user_request: str) -> str:
-    return f"""
-You are a backend developer.
-Generate clean working code for this requirement:
-
-{user_request}
-
-Return only code. No explanation.
-"""
-
-def build_test_prompt(user_request: str) -> str:
-    return f"""
-Generate test cases for this requirement:
-
-{user_request}
-
-Return only test code. No explanation.
-"""
+def build_prompt(task, mode="code"):
+    if mode == "code":
+        return f"Write Python code for: {task}. Only return code."
+    elif mode == "test":
+        return (
+            f"Write Python unit tests for the code generated for: {task}. "
+            f"Use unittest. Only output valid Python test code."
+        )
